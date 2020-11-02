@@ -33,15 +33,17 @@ public class AccountManager implements Util {
 			System.out.println("새로 만드실 계좌번호를 입력해주세요.");
 			System.out.println("계좌 번호 :  ");
 			String AccountNumber = SC.next();
+			Account account = FindAccount_Nu(AccountNumber);
+			SC.nextLine();
 			if (FindAccount_Nu(AccountNumber) != null) { // 계좌번호가 중복될시
 				System.out.println("※ 계좌번호가 중복됩니다. ");
 				return;
 			} else {
 				System.out.println("계좌주 : ");
-				String AccountName = SC.next();
+				String AccountName = SC.nextLine();
 				System.out.print("비밀번호 : "); // 수정 필요 __숫자 4자리 입력
-				String Password = SC.next();
-				accountArray[i] = new Account(AccountNumber, AccountName, Password);
+				String Password = SC.nextLine();
+				addInfor(new Account(AccountNumber, AccountName, Password));
 			}
 			System.out.println("============================================================================");
 			System.out.println("*" + FindAccount_Nu(AccountNumber).getAccountName() + "님의 계좌가 정상적으로 개설되었습니다.");
@@ -65,7 +67,7 @@ public class AccountManager implements Util {
 	// 계좌 조회
 	public void AccountCheck() {
 
-		System.out.println("[   계 좌 조 회    ]");
+		System.out.println("[========계 좌 조 회========]");
 		System.out.print("계좌 번호: ");
 		String number = SC.next();
 		Account account = FindAccount_Nu(number);
@@ -115,43 +117,6 @@ public class AccountManager implements Util {
 		}
 	}
 
-	// 멤버십 생성
-	public void membership() {
-
-		System.out.println("이름을 입력하세요 : ");
-		String accountName = SC.next();
-		Account account = FindAccount_Na(accountName);
-		if (FindAccount_Na(accountName) == null) {
-			System.out.println("존재하지 않는 이름입니다.");
-			System.out.println("이름을 다시 확인하시기 바랍니다.");
-			System.out.println();
-			return;
-		} else if (account != null) {
-			for (int i = 0; accountArray[i] != null; i++)
-				if (account.getAccountName().equals(accountArray[i].getAccountName())) {
-					Account AccountCheck = accountArray[i];
-					if (AccountCheck != null) {
-						if (account.getBalance() < 10000 || totalTrans < 3) {
-							String membership = "Silver";
-							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
-						} else if (account.getBalance() < 30000 || totalTrans < 6) {
-							String membership = "Gold";
-							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
-						} else if (account.getBalance() < 60000 || totalTrans < 9) {
-							String membership = "Dia";
-							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
-						} else {
-							String membership = "Platinum";
-							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
-
-						}
-
-						break;
-					}
-				}
-		}
-	}
-
 	public static Account FindAccount_Na(String AccountName) {
 		for (int i = 0; accountArray[i] != null; i++)
 			if (accountArray[i].getAccountName().equals(AccountName))
@@ -161,7 +126,7 @@ public class AccountManager implements Util {
 
 	// 계좌 입금
 	public void saving() {
-		System.out.println("[===입  금===]");
+		System.out.println("[========입  금========]");
 		System.out.print("계좌 번호: ");
 		String number = SC.next();
 		Account account = FindAccount_Nu(number);
@@ -193,7 +158,7 @@ public class AccountManager implements Util {
 
 	// 계좌 출금
 	public void withdraw() {
-		System.out.println("[===출  금===]");
+		System.out.println("[========출  금========]");
 		System.out.print("계좌 번호: ");
 		String number = SC.next();
 		Account account = FindAccount_Nu(number);
@@ -229,7 +194,7 @@ public class AccountManager implements Util {
 
 	// 계좌 이체
 	public void transfer() {
-		System.out.println("[===이  체===]");
+		System.out.println("[========이  체========]");
 		System.out.print("계좌 번호: ");
 		String number = SC.next();
 		Account account = FindAccount_Nu(number);
@@ -267,6 +232,43 @@ public class AccountManager implements Util {
 			System.out.println();
 		}
 
+	}
+
+	// 멤버십 생성
+	public void membership() {
+
+		System.out.println("이름을 입력하세요 : ");
+		String accountName = SC.next();
+		Account account = FindAccount_Na(accountName);
+		if (FindAccount_Na(accountName) == null) {
+			System.out.println("존재하지 않는 이름입니다.");
+			System.out.println("이름을 다시 확인하시기 바랍니다.");
+			System.out.println();
+			return;
+		} else if (account != null) {
+			for (int i = 0; accountArray[i] != null; i++)
+				if (account.getAccountName().equals(accountArray[i].getAccountName())) {
+					Account AccountCheck = accountArray[i];
+					if (AccountCheck != null) {
+						if (account.getBalance() < 10000 || totalTrans < 3) {
+							String membership = "Silver";
+							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
+						} else if (account.getBalance() < 30000 || totalTrans < 6) {
+							String membership = "Gold";
+							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
+						} else if (account.getBalance() < 60000 || totalTrans < 9) {
+							String membership = "Dia";
+							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
+						} else {
+							String membership = "Platinum";
+							System.out.println(account.getAccountName() + "님의 등급은 " + membership + "입니다.");
+
+						}
+
+						break;
+					}
+				}
+		}
 	}
 
 	// getter & setter 메서드
