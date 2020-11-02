@@ -237,7 +237,7 @@ public class AccountManager implements Util {
 	// 멤버십 생성
 	public void membership() {
 
-		System.out.println("이름을 입력하세요 : ");
+		System.out.println("계좌주를 입력하세요 : ");
 		String accountName = SC.next();
 		Account account = FindAccount_Na(accountName);
 		if (FindAccount_Na(accountName) == null) {
