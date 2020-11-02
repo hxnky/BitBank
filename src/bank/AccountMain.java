@@ -12,7 +12,7 @@ public class AccountMain implements Util {
 			System.out.println("============================ ");
 			System.out.println("1. 계좌 생성");
 			System.out.println("2. 계좌 조회");
-			System.out.println("3. 멤버십");
+			System.out.println("3. ");
 			System.out.println("4. 예금");
 			System.out.println("5. 출금");
 			System.out.println("6. 이체");
@@ -32,9 +32,9 @@ public class AccountMain implements Util {
 			case 2:
 				manager.AccountCheck();
 				break;
-			case 3:
-				manager.membership();		
-				break;
+//			case 3:
+//				
+//				break;
 			case 4:
 				manager.saving();
 				break;

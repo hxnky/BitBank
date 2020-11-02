@@ -41,7 +41,7 @@ public class AccountManager implements Util {
 				String AccountName = SC.next();
 				System.out.print("비밀번호 : "); // 수정 필요 __숫자 4자리 입력
 				String Password = SC.next();
-				accountArray[i] = new Account(AccountNumber, AccountName, Password, balance, totalTrans);
+				accountArray[i] = new Account(AccountNumber, AccountName, Password);
 			}
 			System.out.println("============================================================================");
 			System.out.println("*" + FindAccount_Nu(AccountNumber).getAccountName() + "님의 계좌가 정상적으로 개설되었습니다.");
