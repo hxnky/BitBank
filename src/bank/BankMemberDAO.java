@@ -17,11 +17,10 @@ public class BankMemberDAO implements Util {
 	public void run() {
 
 		int key = 0;
-		while ((key = menu()) != 0) {
+		while ((key = menu()) != 0) { 
 			switch (key) {
 			case 1:
 				Login();
-				lm.startBankMenu();
 				break;
 			case 2:
 				CreateAccount();	
@@ -49,6 +48,7 @@ public class BankMemberDAO implements Util {
 			System.out.println("등록되지 않은 ID입니다.");
 		} else if (member.getPassword().equals(password)) {
 			System.out.println("[" + member.getName() + "]님께서 로그인 하셨습니다.");
+			lm.startBankMenu();
 		} else {
 			System.out.println("비밀번호가 틀렸습니다.");
 		}
