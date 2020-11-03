@@ -1,4 +1,4 @@
-package bank;
+package member;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ public class BankMemberDAO implements Util {
 		while ((key = menu()) != 0) {
 			switch (key) {
 			case 1:
-				CreateAccount();
+				CreateAccount();	
 				break;
 			case 2:
 				Login();
@@ -71,7 +71,7 @@ public class BankMemberDAO implements Util {
 
 	}
 
-	private boolean nameCheck(String name) {
+	public boolean nameCheck(String name) {
 		boolean check = true;
 		BankMemberDTO member = FindByName(name);
 		if (member == null)
@@ -105,7 +105,7 @@ public class BankMemberDAO implements Util {
 		return null;
 	}
 
-	private boolean passwordCheck(String password) {
+	public boolean passwordCheck(String password) {
 		boolean check = true;
 		BankMemberDTO member = FindByPassword(password);
 		if (member == null)
@@ -165,8 +165,10 @@ public class BankMemberDAO implements Util {
 	}
 
 	private int menu() {
+		System.out.println("================================================");
 		System.out.println("Bit Bank에 오신 것을 환영합니다");
-		return getNumInput("[1]로그인 [2]회원가입 [3] 비밀번호 찾기 [4]회원 탈퇴 [5]종료");
+		return getNumInput("[1]로그인 [2]회원가입 [3]비밀번호 찾기 [4]회원 탈퇴 [5]종료");
+		
 	}
 
 	private int getNumInput(String msg) {
