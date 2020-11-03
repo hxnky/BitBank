@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BankMemberDAO implements Util {
-
+	LoanManager lm = new LoanManager();
 	List<BankMemberDTO> members = new ArrayList<>();
 
 	public BankMemberDAO() {
@@ -21,6 +21,7 @@ public class BankMemberDAO implements Util {
 			switch (key) {
 			case 1:
 				Login();
+				lm.startBankMenu();
 				break;
 			case 2:
 				CreateAccount();	
@@ -71,7 +72,7 @@ public class BankMemberDAO implements Util {
 
 	}
 
-	public boolean nameCheck(String name) {
+	private boolean nameCheck(String name) {
 		boolean check = true;
 		BankMemberDTO member = FindByName(name);
 		if (member == null)
@@ -105,7 +106,7 @@ public class BankMemberDAO implements Util {
 		return null;
 	}
 
-	public boolean passwordCheck(String password) {
+	private boolean passwordCheck(String password) {
 		boolean check = true;
 		BankMemberDTO member = FindByPassword(password);
 		if (member == null)
