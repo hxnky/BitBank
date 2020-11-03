@@ -20,10 +20,10 @@ public class BankMemberDAO implements Util {
 		while ((key = menu()) != 0) {
 			switch (key) {
 			case 1:
-				CreateAccount();	
+				Login();
 				break;
 			case 2:
-				Login();
+				CreateAccount();	
 				break;
 			case 3:
 				FindPw();
@@ -38,7 +38,7 @@ public class BankMemberDAO implements Util {
 		}
 	}
 
-	private void CreateAccount() {
+	private void Login() {
 		SC.nextLine();
 		String name = getStrInput("이름을 입력하세요 : ");
 		String password = getStrInput("비밀번호를 입력하세요 : ");
@@ -53,7 +53,7 @@ public class BankMemberDAO implements Util {
 		}
 	}
 
-	private void Login() {
+	private void CreateAccount() {
 		SC.nextLine();
 		String name = getStrInput("이름을 입력하세요 : ");
 		String password = getStrInput("비밀번호를 입력하세요 : ");
